@@ -80,10 +80,14 @@ async def perform(start=False,data=None):
  try:
   result=await request('external/start' if start else 'external/'+round_data['id']+'/action',{'game':game} if start else data)
   if v!=version:return
+  previous=round_data
   round_data=result;draw(result)
+  if not start and not result.get('done'):
+   if game=='memory':window.gameSound('match' if previous and len(result.get('matched',[]))>len(previous.get('matched',[])) else 'flip')
+   elif result.get('feedback'):window.gameSound('correct' if result['feedback']=='Correct.' else 'wrong')
   if start:window.gameStarted();message('Round ready. Source: '+result['source']);el('game-start').textContent='Restart'
  except Exception as error:
-  if v==version:message(str(error))
+  if v==version:message(str(error));window.gameSound('error')
  finally:
   if v==version:
    busy=False

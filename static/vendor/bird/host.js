@@ -25,3 +25,13 @@ document.querySelectorAll('[data-key]').forEach(button=>{
 });
 window.addEventListener('blur',releaseAll);
 document.addEventListener('visibilitychange',()=>{releaseAll();if(document.hidden&&engine)engine.audio.setVolume(0);else if(engine)engine.audio.setVolume(sound?0.35:0);});
+
+function fitGame(){
+ const screen=document.getElementById('screen'),bar=document.getElementById('bar'),touch=document.getElementById('touch');
+ const width=Math.max(1,document.documentElement.clientWidth-16);
+ const height=Math.max(1,document.documentElement.clientHeight-bar.offsetHeight-(touch?touch.offsetHeight:0)-48);
+ const ratio=1.5;const fitted=Math.min(width,height*ratio);
+ screen.style.width=fitted+'px';screen.style.height=(fitted/ratio)+'px';
+}
+fitGame();window.addEventListener('resize',fitGame);
+document.querySelectorAll('button').forEach(b=>{b.addEventListener('contextmenu',e=>e.preventDefault());b.addEventListener('selectstart',e=>e.preventDefault());});

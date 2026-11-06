@@ -1,0 +1,31 @@
+INFINITRIX SOUND AND LAYOUT UPDATE
+
+Stop the server with Ctrl+C. Back up your project. Merge the contents of the
+ZIP's Infinitrix folder into your existing project; replace matching files.
+Keep your .env, .venv and instance folder. Do not delete the old project.
+Restart the server and hard-refresh the browser (Ctrl+Shift+R).
+
+Sound: use the new Sound button in the top bar, or Settings > Audio.
+Settings volume controls the five API games and interface click sounds.
+Sounds are synthesized locally; no extra files or sound services are needed.
+The two arcade games retain their own sound toggles. Inputs, answers and
+memory moves get feedback tones. API games do not play background music.
+Gentle page and card animations are enabled when reduced motion is off.
+Settings > Display > Reduced motion can disable optional animations; your
+browser's reduced-motion preference also takes precedence. No flashing added.
+
+Layout: logo fits the sidebar, canvases preserve their original aspect ratio,
+platformer touch controls sit below the game and cannot be selected as text.
+
+Verification: 9 automated server/game-integration tests pass; Python and
+JavaScript syntax checks pass. Browser launch is restricted in this environment.
+Rendering fixes, audible sound, and touch behavior still need local verification.
+Test both games after resizing and rotating your phone; hold Left/Right while
+pressing Jump, release outside the button, and check movement stops. Confirm the
+whole scene is visible and the logo does not overlap the content. Check all five
+API games with Sound on and off. Login/sign-up sounds remain off before login.
+
+After testing, commit your changes:
+git add .
+git commit -m "Improve game sizing, touch controls and sound feedback"
+git push
