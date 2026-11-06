@@ -1,0 +1,8 @@
+ARCADE UPDATE: Read INSTALL_ARCADE.txt and THIRD_PARTY_GAMES.md first.
+
+API EDITION
+6 automated integration tests passed with mocked provider responses.
+All five games tested: questions, cards, Sudoku solution check, server scoring, duplicate-save rejection, provider errors.
+Python and JavaScript syntax checks passed.
+Live API connectivity and actual browser/PyScript execution remain to be tested locally.
+No claims of successful live-provider testing are made.

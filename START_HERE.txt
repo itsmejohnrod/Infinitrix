@@ -1,0 +1,20 @@
+ARCADE UPDATE: Read INSTALL_ARCADE.txt and THIRD_PARTY_GAMES.md first.
+
+INFINITRIX API EDITION - UPDATE
+
+Read README.md first. Stop the server and back up your existing project folder.
+Copy this archive's Infinitrix contents into your existing Infinitrix folder,
+replacing source files. KEEP .env, .venv, and instance/ from your current project.
+They are intentionally absent from this update. Your account database stays.
+
+In Git Bash inside your original project folder:
+source .venv/Scripts/activate
+python -m pip install -r requirements.txt
+python -m uvicorn app:create_app --factory --host 0.0.0.0 --port 8000
+
+Refresh the website. The five games should now be Sudoku, Card Memory,
+Word Detective, Trivia Challenge, and Guess the Pokemon.
+
+Every new round uses its named third-party provider. No API keys are required
+by the documented endpoints, but live availability must be checked locally.
+No local game content silently replaces failed API responses.

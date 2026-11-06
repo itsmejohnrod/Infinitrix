@@ -1,0 +1,46 @@
+INFINITRIX ARCADE UPDATE
+
+1. Stop the running server with Ctrl+C.
+2. Back up your existing Infinitrix folder.
+3. Extract this ZIP. Copy the CONTENTS of its Infinitrix folder into:
+   C:\Infinitrix_For_SIA-Project\Infinitrix
+   Replace matching files. Do not delete the original folder first.
+4. Keep your existing .env, .venv and instance folder. They are not included
+   in this update. Existing accounts and results remain in your database.
+5. In Git Bash run one line at a time:
+
+cd "C:\Infinitrix_For_SIA-Project\Infinitrix"
+source .venv/Scripts/activate
+python -m pip install -r requirements.txt
+python -m uvicorn app:create_app --factory --host 0.0.0.0 --port 8000
+
+6. Open http://localhost:8000 and refresh with Ctrl+Shift+R.
+   Log in and select Arcade extras in the sidebar.
+   On a phone use the computer's current Wi-Fi IPv4 address and port 8000.
+
+Included: your five API games, Clumsy Bird, and a final-stage platformer demo.
+Added: midnight-blue base colors and locally hosted pixel headings.
+This is an integration update, not a completed animated visual redesign.
+
+TEST LOCALLY
+- Launch Clumsy Bird. Tap/click or press Space. Check collisions and replay.
+- Sound starts off. Enable the sound toggle, listen, then mute again.
+- Launch Pixel Platformer. It needs the jsDelivr CDN for its engine.
+- Move using Left/Right, jump using Space. On your phone test holding a
+  movement button while tapping Jump. Release and check movement stops.
+- Navigate away and confirm game audio stops. Restart using Restart game.
+- Confirm neither game opens another website during play.
+- Check desktop, portrait phone and landscape phone layouts.
+
+These new source games do not count as additional external API games and
+have no shared leaderboard integration. Their sound toggles are local to
+this game launch, separate from account preferences. See THIRD_PARTY_GAMES.md
+for source, licenses, changes, audit scope and verification limits.
+
+Automated checks (from the project folder):
+python -m unittest discover -s tests -p test_external.py -v
+python -m unittest discover -s tests -p test_arcade.py -v
+
+If the platformer says Engine unavailable, confirm cdn.jsdelivr.net is not
+blocked on your connection. If either game fails, capture the browser
+Console error in VS Code/desktop browser developer tools for diagnosis.
